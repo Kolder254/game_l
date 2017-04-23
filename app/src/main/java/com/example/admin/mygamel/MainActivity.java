@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ElementCorner view43 = (ElementCorner) findViewById(R.id.pos_4_3);
         ImageView view44 = (ImageView) findViewById(R.id.pos_4_4);
 
-        view11.setRotation(view11.getRotation()+180);
+
         view12.setRightPos(Position.pos2);
         view13.setRightPos(Position.pos3);
         view21.setRightPos(Position.pos2);

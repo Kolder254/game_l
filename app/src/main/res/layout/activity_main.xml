@@ -15,9 +15,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:src="@drawable/elem_plus" />
+                android:src="@drawable/elem_plus"
+                android:rotation="180"/>
 
-        <ImageView
+        <com.example.admin.mygamel.ElementCorner
                 android:id="@+id/pos_1_2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -25,14 +26,14 @@
                 android:src="@drawable/elem_corner"
         />
 
-        <ImageView
+        <com.example.admin.mygamel.ElementCorner
                 android:id="@+id/pos_1_3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@drawable/elem_corner" />
 
-        <ImageView
+        <com.example.admin.mygamel.ElementLine
                 android:id="@+id/pos_1_4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -46,28 +47,28 @@
             android:layout_weight="1"
             android:orientation="horizontal">
 
-        <ImageView
+        <com.example.admin.mygamel.ElementLine
                 android:id="@+id/pos_2_1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@drawable/elem_line" />
 
-        <ImageView
+        <com.example.admin.mygamel.ElementLine
                 android:id="@+id/pos_2_2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@drawable/elem_line" />
 
-        <ImageView
+        <com.example.admin.mygamel.ElementLine
                 android:id="@+id/pos_2_3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@drawable/elem_line" />
 
-        <ImageView
+        <com.example.admin.mygamel.ElementCorner
                 android:id="@+id/pos_2_4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -81,28 +82,28 @@
             android:layout_weight="1"
             android:orientation="horizontal">
 
-        <ImageView
+        <com.example.admin.mygamel.ElementCorner
                 android:id="@+id/pos_3_1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@drawable/elem_corner" />
 
-        <ImageView
+        <com.example.admin.mygamel.ElementCorner
                 android:id="@+id/pos_3_2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@drawable/elem_corner" />
 
-        <ImageView
+        <com.example.admin.mygamel.ElementCorner
                 android:id="@+id/pos_3_3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@drawable/elem_corner" />
 
-        <ImageView
+        <com.example.admin.mygamel.ElementCorner
                 android:id="@+id/pos_3_4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -116,27 +117,26 @@
             android:layout_weight="1"
             android:orientation="horizontal">
 
-        <ImageView
+        <com.example.admin.mygamel.ElementCorner
                 android:id="@+id/pos_4_1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@drawable/elem_corner" />
 
-        <ImageView
+        <com.example.admin.mygamel.ElementLine
                 android:id="@+id/pos_4_2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@drawable/elem_line" />
 
-        <ImageView
+        <com.example.admin.mygamel.ElementCorner
                 android:id="@+id/pos_4_3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:src="@drawable/elem_corner"
-        />
+                android:src="@drawable/elem_corner" />
 
         <ImageView
                 android:id="@+id/pos_4_4"
