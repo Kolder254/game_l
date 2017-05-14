@@ -1,57 +1,70 @@
 package com.example.admin.mygamel;
 
-import android.content.Context;
-import android.content.DialogInterface;
+import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.example.admin.mygamel.interfaces.SaveData;
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.util.ArrayList;
 
 
-public class Level1 extends AppCompatActivity implements View.OnClickListener{
+public class Level1 extends android.app.Fragment implements View.OnClickListener{
 
 
     ArrayList<Element> arrayList;
     ImageView buttonNext;
     ImageView view44;
-    private MainActivity main;
+    JSONArray jsonArray;
+    MainActivity main;
 
-    Level1(MainActivity mainActivity){
-        main = mainActivity;
+    public Level1(){}
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.level_1, container,false);
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.level_1);
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 
         arrayList = new ArrayList<>();
+        main = (MainActivity)getActivity();
 
-        ImageView view11 = (ImageView) findViewById(R.id.pos_1_1);
-        ElementCorner view12 = (ElementCorner) findViewById(R.id.pos_1_2);
-        ElementCorner view13 = (ElementCorner) findViewById(R.id.pos_1_3);
-        ElementLine view14 = (ElementLine) findViewById(R.id.pos_1_4);
-        ElementLine view21 = (ElementLine) findViewById(R.id.pos_2_1);
-        ElementLine view22 = (ElementLine) findViewById(R.id.pos_2_2);
-        ElementLine view23 = (ElementLine) findViewById(R.id.pos_2_3);
-        ElementCorner view24 = (ElementCorner) findViewById(R.id.pos_2_4);
-        ElementCorner view31 = (ElementCorner) findViewById(R.id.pos_3_1);
-        ElementCorner view32 = (ElementCorner) findViewById(R.id.pos_3_2);
-        ElementCorner view33 = (ElementCorner) findViewById(R.id.pos_3_3);
-        ElementCorner view34 = (ElementCorner) findViewById(R.id.pos_3_4);
-        ElementCorner view41 = (ElementCorner) findViewById(R.id.pos_4_1);
-        ElementLine view42 = (ElementLine) findViewById(R.id.pos_4_2);
-        ElementCorner view43 = (ElementCorner) findViewById(R.id.pos_4_3);
-        view44 = (ImageView) findViewById(R.id.pos_4_4);
-        buttonNext = (ImageView) findViewById(R.id.button_next);
+        ImageView view11 = (ImageView)getView().findViewById(R.id.pos_1_1);
+        ElementCorner view12 = (ElementCorner)getView().findViewById(R.id.pos_1_2);
+        ElementCorner view13 = (ElementCorner)getView().findViewById(R.id.pos_1_3);
+        ElementLine view14 = (ElementLine)getView().findViewById(R.id.pos_1_4);
+        ElementLine view21 = (ElementLine)getView().findViewById(R.id.pos_2_1);
+        ElementLine view22 = (ElementLine)getView().findViewById(R.id.pos_2_2);
+        ElementLine view23 = (ElementLine)getView().findViewById(R.id.pos_2_3);
+        ElementCorner view24 = (ElementCorner)getView().findViewById(R.id.pos_2_4);
+        ElementCorner view31 = (ElementCorner)getView().findViewById(R.id.pos_3_1);
+        ElementCorner view32 = (ElementCorner)getView().findViewById(R.id.pos_3_2);
+        ElementCorner view33 = (ElementCorner)getView().findViewById(R.id.pos_3_3);
+        ElementCorner view34 = (ElementCorner)getView().findViewById(R.id.pos_3_4);
+        ElementCorner view41 = (ElementCorner)getView().findViewById(R.id.pos_4_1);
+        ElementLine view42 = (ElementLine)getView().findViewById(R.id.pos_4_2);
+        ElementCorner view43 = (ElementCorner)getView().findViewById(R.id.pos_4_3);
+        view44 = (ImageView)getView().findViewById(R.id.pos_4_4);
+        buttonNext = (ImageView)getView().findViewById(R.id.button_next);
 
 
         view12.setRightPos(Position.pos2);
@@ -91,8 +104,11 @@ public class Level1 extends AppCompatActivity implements View.OnClickListener{
         view43.setOnClickListener(this);
         view44.setOnClickListener(this);
 
-
-
+        try {
+            jsonArray = new JSONArray(main.getStorage().loadData());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -101,8 +117,11 @@ public class Level1 extends AppCompatActivity implements View.OnClickListener{
         if (v instanceof Element) {
             ((Element) v).myRotate();
         } else if (v.getId() == R.id.button_next) {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
+            android.app.FragmentManager fragmentManager = getFragmentManager();
+            android.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();  		// добавляем фрагмент
+            LevelSelection levelSelection = new LevelSelection();
+            fragmentTransaction.replace(R.id.main_activity,levelSelection);
+            fragmentTransaction.commit();
         }
 
 
@@ -115,6 +134,7 @@ public class Level1 extends AppCompatActivity implements View.OnClickListener{
                     ((ElementLine) i).setActive();
                 }
             }
+            saveData();
         } else {
             buttonNext.setImageResource(R.drawable.button_next);
             buttonNext.setOnClickListener(null);
@@ -127,6 +147,8 @@ public class Level1 extends AppCompatActivity implements View.OnClickListener{
         }
     }
 
+
+
     boolean isCompleted(){
         for (Element v: arrayList) {
             if (!v.isRightPos()) {
@@ -137,7 +159,13 @@ public class Level1 extends AppCompatActivity implements View.OnClickListener{
     }
 
     void saveData(){
-        main.getStorage().saveData("level1");
+       try {
+            jsonArray.put(0,true);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        main.getStorage().saveData(jsonArray.toString());
+        Log.v("saveL1",main.getStorage().loadData());
     }
 }
 
