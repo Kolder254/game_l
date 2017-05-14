@@ -14,6 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.example.admin.mygamel.interfaces.SaveData;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 
@@ -27,7 +29,7 @@ public class Level1 extends android.app.Fragment implements View.OnClickListener
     ImageView buttonNext;
     ImageView view44;
     JSONArray jsonArray;
-    MainActivity main;
+
 
     public Level1(){}
 
@@ -46,7 +48,7 @@ public class Level1 extends android.app.Fragment implements View.OnClickListener
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 
         arrayList = new ArrayList<>();
-        main = (MainActivity)getActivity();
+
 
         ImageView view11 = (ImageView)getView().findViewById(R.id.pos_1_1);
         ElementCorner view12 = (ElementCorner)getView().findViewById(R.id.pos_1_2);
@@ -105,7 +107,7 @@ public class Level1 extends android.app.Fragment implements View.OnClickListener
         view44.setOnClickListener(this);
 
         try {
-            jsonArray = new JSONArray(main.getStorage().loadData());
+            jsonArray = new JSONArray(getStorage().loadData());
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -164,8 +166,12 @@ public class Level1 extends android.app.Fragment implements View.OnClickListener
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        main.getStorage().saveData(jsonArray.toString());
-        Log.v("saveL1",main.getStorage().loadData());
+        getStorage().saveData(jsonArray.toString());
+        Log.v("saveL1",getStorage().loadData());
+    }
+
+    public SaveData getStorage(){
+        return BaseStorage.instance(getActivity());
     }
 }
 

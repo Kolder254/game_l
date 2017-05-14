@@ -14,6 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.example.admin.mygamel.interfaces.SaveData;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 
@@ -25,15 +27,9 @@ public class LevelSelection extends android.app.Fragment implements View.OnClick
     ImageView level1;
     ImageView level2;
 
-    private MainActivity main;
     JSONArray jsonArray;
 
     public LevelSelection(){}
-
-    @SuppressLint("ValidFragment")
-    public LevelSelection(MainActivity main) {
-        this.main = main;
-    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,16 +45,16 @@ public class LevelSelection extends android.app.Fragment implements View.OnClick
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        if(main.getStorage().loadData()==null){
+        if(getStorage().loadData()==null){
             JSONArray jsonArray = new JSONArray();
             for(int i = 0;i<9;i++) {
                 jsonArray.put(false);
             }
-            main.getStorage().saveData(jsonArray.toString());
+            getStorage().saveData(jsonArray.toString());
         }
 
         try {
-            jsonArray = new JSONArray(main.getStorage().loadData());
+            jsonArray = new JSONArray(getStorage().loadData());
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -101,5 +97,9 @@ public class LevelSelection extends android.app.Fragment implements View.OnClick
         MainScreen mainScreen = new MainScreen();
         ft.replace(R.id.main_activity,mainScreen);
         ft.commit();
+    }
+
+    public SaveData getStorage(){
+        return BaseStorage.instance(getActivity());
     }
 }
