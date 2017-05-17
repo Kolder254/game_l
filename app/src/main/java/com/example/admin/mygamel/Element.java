@@ -1,6 +1,7 @@
 package com.example.admin.mygamel;
 
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.util.AttributeSet;
 
 /**
@@ -40,5 +41,6 @@ abstract class Element extends android.support.v7.widget.AppCompatImageView{
     public void setRightPos(Position pos) {
         rightPos = pos;
     }
+
 
 }

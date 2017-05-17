@@ -24,6 +24,7 @@ import org.json.JSONException;
  */
 
 public class LevelSelection extends android.app.Fragment implements View.OnClickListener,OnBackPressedListener{
+
     ImageView level1;
     ImageView level2;
 
@@ -47,7 +48,7 @@ public class LevelSelection extends android.app.Fragment implements View.OnClick
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         if(getStorage().loadData()==null){
             JSONArray jsonArray = new JSONArray();
-            for(int i = 0;i<9;i++) {
+            for(int i = 0;i<10;i++) {
                 jsonArray.put(false);
             }
             getStorage().saveData(jsonArray.toString());

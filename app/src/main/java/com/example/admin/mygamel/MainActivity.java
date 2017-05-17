@@ -1,6 +1,9 @@
 package com.example.admin.mygamel;
 
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -38,10 +41,22 @@ public class MainActivity extends FragmentActivity{
         stopService(new Intent(this,MusicService.class));
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        stopService(new Intent(this,MusicService.class));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        startService(new Intent(this,MusicService.class));
+    }
 
     public SaveData getStorage(){
         return BaseStorage.instance(this);
     }
+
     /*
     @Override
     public void onBackPressed() {

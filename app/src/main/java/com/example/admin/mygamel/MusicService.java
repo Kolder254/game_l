@@ -22,6 +22,7 @@ public class MusicService extends Service {
     public void onCreate() {
         super.onCreate();
         player =  MediaPlayer.create(this, R.raw.theme_music);
+        player.setLooping(true);
         player.start();
     }
 
