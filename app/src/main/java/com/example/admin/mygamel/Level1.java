@@ -23,14 +23,9 @@ import org.json.JSONException;
 import java.util.ArrayList;
 
 
-public class Level1 extends android.app.Fragment implements View.OnClickListener{
-
-
+public class Level1 extends Level implements View.OnClickListener{
     ArrayList<Element> arrayList;
     ImageView buttonNext;
-    ImageView view44;
-    JSONArray jsonArray;
-
 
     public Level1(){}
 
@@ -50,7 +45,6 @@ public class Level1 extends android.app.Fragment implements View.OnClickListener
 
         arrayList = new ArrayList<>();
 
-
         ImageView view11 = (ImageView)getView().findViewById(R.id.pos_1_1);
         ElementCorner view12 = (ElementCorner)getView().findViewById(R.id.pos_1_2);
         ElementCorner view13 = (ElementCorner)getView().findViewById(R.id.pos_1_3);
@@ -66,9 +60,8 @@ public class Level1 extends android.app.Fragment implements View.OnClickListener
         ElementCorner view41 = (ElementCorner)getView().findViewById(R.id.pos_4_1);
         ElementLine view42 = (ElementLine)getView().findViewById(R.id.pos_4_2);
         ElementCorner view43 = (ElementCorner)getView().findViewById(R.id.pos_4_3);
-        view44 = (ImageView)getView().findViewById(R.id.pos_4_4);
+        ImageView view44 = (ImageView)getView().findViewById(R.id.pos_4_4);
         buttonNext = (ImageView)getView().findViewById(R.id.button_next);
-
 
         view12.setRightPos(Position.pos2);
         view13.setRightPos(Position.pos3);
@@ -107,11 +100,6 @@ public class Level1 extends android.app.Fragment implements View.OnClickListener
         view43.setOnClickListener(this);
         view44.setOnClickListener(this);
 
-        try {
-            jsonArray = new JSONArray(getStorage().loadData());
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
     }
 
     @Override
@@ -121,27 +109,25 @@ public class Level1 extends android.app.Fragment implements View.OnClickListener
             ((Element) v).myRotate();
         } else if (v.getId() == R.id.button_next) {
             android.app.FragmentManager fragmentManager = getFragmentManager();
-            android.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();  		// добавляем фрагмент
+            android.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             LevelSelection levelSelection = new LevelSelection();
             fragmentTransaction.replace(R.id.main_activity,levelSelection);
             fragmentTransaction.commit();
         }
 
 
-        if (isCompleted()) {
+        if (isCompleted(arrayList)) {
             buttonNext.setImageResource(R.drawable.button_next_active);
             buttonNext.setOnClickListener(this);
-            view44.setImageResource(R.drawable.elem_light_active);
             for(Element i:arrayList){
                 if(i instanceof ElementLine){
                     ((ElementLine) i).setActive();
                 }
             }
-            saveData();
+            super.saveData(1);
         } else {
             buttonNext.setImageResource(R.drawable.button_next);
             buttonNext.setOnClickListener(null);
-            view44.setImageResource(R.drawable.elem_light);
             for(Element i:arrayList){
                 if(i instanceof ElementLine){
                     ((ElementLine) i).resetActive();
@@ -150,30 +136,6 @@ public class Level1 extends android.app.Fragment implements View.OnClickListener
         }
     }
 
-
-
-    boolean isCompleted(){
-        for (Element v: arrayList) {
-            if (!v.isRightPos()) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    void saveData(){
-       try {
-            jsonArray.put(0,true);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        getStorage().saveData(jsonArray.toString());
-        Log.v("saveL1",getStorage().loadData());
-    }
-
-    public SaveData getStorage(){
-        return BaseStorage.instance(getActivity());
-    }
 }
 
 

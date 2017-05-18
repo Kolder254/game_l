@@ -140,7 +140,7 @@
             android:id="@+id/pos_4_4"
             style="@style/MyStyle"
             android:layout_weight="1"
-            android:src="@drawable/elem_light" />
+            android:src="@drawable/elem_light_active" />
     </LinearLayout>
     </LinearLayout>
 </LinearLayout>
