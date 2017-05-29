@@ -1,28 +1,15 @@
 package com.example.admin.mygamel;
 
 import android.content.Intent;
-import android.media.AudioManager;
-import android.media.MediaPlayer;
-import android.media.SoundPool;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-
-import com.example.admin.mygamel.interfaces.*;
 
 /**
  * Created by Admin on 23.04.2017.
  */
 public class MainActivity extends FragmentActivity{
+    private boolean musicActive;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,6 +20,7 @@ public class MainActivity extends FragmentActivity{
         MainScreen mainScreen = new MainScreen();
         fragmentTransaction.add(R.id.main_activity,mainScreen);
         fragmentTransaction.commit();
+        musicActive = true;
     }
 
     @Override
@@ -50,22 +38,28 @@ public class MainActivity extends FragmentActivity{
     @Override
     protected void onResume() {
         super.onResume();
-        startService(new Intent(this,MusicService.class));
+        if(musicActive) {
+            startService(new Intent(this, MusicService.class));
+        }
     }
 
     public SaveData getStorage(){
         return BaseStorage.instance(this);
     }
 
-    /*
-    @Override
-    public void onBackPressed() {
-        android.app.Fragment fragment = getFragmentManager().getFragment(null,"select");
-        if(fragment!=null && fragment.isVisible() && fragment instanceof OnBackPressedListener){
-            ((OnBackPressedListener) fragment).onBackPressed();
+    public boolean isMusicActive() {
+        return musicActive;
+    }
+
+    public void setMusicActive(){
+        if(musicActive){
+            stopService(new Intent(this,MusicService.class));
+            musicActive = false;
         } else {
-            super.onBackPressed();
+            startService(new Intent(this,MusicService.class));
+            musicActive = true;
         }
-    }*/
+    }
+
 }
 

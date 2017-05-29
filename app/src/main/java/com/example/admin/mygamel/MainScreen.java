@@ -13,6 +13,7 @@ import android.widget.ImageView;
 
 public class MainScreen extends android.app.Fragment implements View.OnClickListener {
     ImageView btnStart;
+    ImageView btnSettings;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,7 +29,9 @@ public class MainScreen extends android.app.Fragment implements View.OnClickList
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         btnStart = (ImageView) getActivity().findViewById(R.id.button_start);
+        btnSettings = (ImageView) getActivity().findViewById(R.id.button_settings);
         btnStart.setOnClickListener(this);
+        btnSettings.setOnClickListener(this);
     }
 
     @Override
@@ -37,6 +40,12 @@ public class MainScreen extends android.app.Fragment implements View.OnClickList
             android.app.FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
             LevelSelection levelSelection = new LevelSelection();
             fragmentTransaction.replace(R.id.main_activity,levelSelection,"select");
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+        } else {
+            android.app.FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+            Settings settings = new Settings();
+            fragmentTransaction.replace(R.id.main_activity,settings);
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
         }

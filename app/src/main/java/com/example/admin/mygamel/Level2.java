@@ -102,6 +102,7 @@ public class Level2 extends Level implements View.OnClickListener{
             android.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             LevelSelection levelSelection = new LevelSelection();
             fragmentTransaction.replace(R.id.main_activity,levelSelection);
+            fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
         }
 

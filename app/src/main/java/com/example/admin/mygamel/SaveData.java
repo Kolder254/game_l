@@ -1,4 +1,4 @@
-package com.example.admin.mygamel.interfaces;
+package com.example.admin.mygamel;
 
 /**
  * Created by Admin on 23.04.2017.

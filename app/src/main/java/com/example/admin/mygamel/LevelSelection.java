@@ -1,20 +1,11 @@
 package com.example.admin.mygamel;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
-import com.example.admin.mygamel.interfaces.SaveData;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,7 +14,7 @@ import org.json.JSONException;
  * Created by Admin on 25.04.2017.
  */
 
-public class LevelSelection extends android.app.Fragment implements View.OnClickListener,OnBackPressedListener{
+public class LevelSelection extends android.app.Fragment implements View.OnClickListener{
 
     ImageView level1;
     ImageView level2;
@@ -163,13 +154,6 @@ public class LevelSelection extends android.app.Fragment implements View.OnClick
         fragmentTransaction.commit();
     }
 
-    @Override
-    public void onBackPressed() {
-        android.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
-        MainScreen mainScreen = new MainScreen();
-        ft.replace(R.id.main_activity,mainScreen);
-        ft.commit();
-    }
 
     public SaveData getStorage(){
         return BaseStorage.instance(getActivity());

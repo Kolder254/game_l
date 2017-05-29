@@ -1,22 +1,11 @@
 package com.example.admin.mygamel;
 
-import android.app.Fragment;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-
-import com.example.admin.mygamel.interfaces.SaveData;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  * Created by Admin on 17.05.2017.

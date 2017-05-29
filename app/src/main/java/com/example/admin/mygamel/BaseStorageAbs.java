@@ -2,8 +2,6 @@ package com.example.admin.mygamel;
 
 import android.content.SharedPreferences;
 
-import com.example.admin.mygamel.interfaces.SaveData;
-
 /**
  * Created by Admin on 02.05.2017.
  */
