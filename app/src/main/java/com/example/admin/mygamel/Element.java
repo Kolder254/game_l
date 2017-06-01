@@ -7,9 +7,9 @@ import android.util.AttributeSet;
 /**
  * Created by Admin on 25.04.2017.
  */ //Abstract element
-abstract class Element extends android.support.v7.widget.AppCompatImageView{
-    Position position = Position.pos1;
-    Position rightPos = Position.pos1;
+public abstract class Element extends android.support.v7.widget.AppCompatImageView{
+    protected Position position = Position.pos1;
+    protected Position rightPos = Position.pos1;
 
     public Element(Context context) {
         super(context);
@@ -23,7 +23,7 @@ abstract class Element extends android.support.v7.widget.AppCompatImageView{
 
     abstract void getRandPos();
 
-    boolean isRightPos(){
+    public boolean isRightPos(){
         if(position.equals(rightPos)){
             return true;
         }

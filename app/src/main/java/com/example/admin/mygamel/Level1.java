@@ -7,6 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.example.admin.mygamel.Controllers.Controller;
+import com.example.admin.mygamel.Model.Levels;
+
 import java.util.ArrayList;
 
 
@@ -31,7 +34,7 @@ public class Level1 extends Level implements View.OnClickListener{
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 
         arrayList = new ArrayList<>();
-        int i  = 5;
+
         ImageView view11 = (ImageView)getView().findViewById(R.id.pos_1_1);
         ElementCorner view12 = (ElementCorner)getView().findViewById(R.id.pos_1_2);
         ElementCorner view13 = (ElementCorner)getView().findViewById(R.id.pos_1_3);
@@ -87,11 +90,13 @@ public class Level1 extends Level implements View.OnClickListener{
         view43.setOnClickListener(this);
         view44.setOnClickListener(this);
 
+        new Levels().addElem(arrayList);
     }
 
     @Override
     public void onClick(View v) {
-
+        Controller.getView(v);
+    /*
         if (v instanceof Element) {
             ((Element) v).myRotate();
         } else if (v.getId() == R.id.button_next) {
@@ -121,7 +126,7 @@ public class Level1 extends Level implements View.OnClickListener{
                     ((ElementLine) i).resetActive();
                 }
             }
-        }
+        }*/
     }
 
 }

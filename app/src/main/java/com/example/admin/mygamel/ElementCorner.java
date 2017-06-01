@@ -8,7 +8,7 @@ import java.util.Random;
 /**
  * Created by Admin on 25.04.2017.
  */ // corner element
-class ElementCorner extends Element{
+public class ElementCorner extends Element{
 
 
     public ElementCorner(Context context) {

@@ -8,7 +8,7 @@ import java.util.Random;
 /**
  * Created by Admin on 25.04.2017.
  */
-class ElementLine extends Element{
+public class ElementLine extends Element{
 
     public ElementLine(Context context) {
         super(context);

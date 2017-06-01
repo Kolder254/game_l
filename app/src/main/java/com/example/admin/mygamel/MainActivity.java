@@ -4,12 +4,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
+import android.view.View;
+
+import com.example.admin.mygamel.Model.Levels;
+
+import java.util.ArrayList;
 
 /**
  * Created by Admin on 23.04.2017.
  */
 public class MainActivity extends FragmentActivity{
     private boolean musicActive;
+    private static Levels levels;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -61,5 +67,24 @@ public class MainActivity extends FragmentActivity{
         }
     }
 
+
+
+    public static void createLevel(ArrayList<Element> arrayList){
+
+        if(levels == null){
+            levels = new Levels();
+        }
+
+        levels.addElem(arrayList);
+
+    }
+
+    public static void getView(View v){
+        levels.getView(v);
+    }
+
+    public static void updateLevel(){
+
+    }
 }
 
