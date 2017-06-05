@@ -1,10 +1,12 @@
-package com.example.admin.mygamel;
+package com.example.admin.mygamel.service;
 
 import android.app.Service;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+
+import com.example.admin.mygamel.R;
 
 /**
  * Created by Admin on 27.04.2017.

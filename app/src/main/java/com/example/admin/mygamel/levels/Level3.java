@@ -1,4 +1,4 @@
-package com.example.admin.mygamel;
+package com.example.admin.mygamel.levels;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,17 +7,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.example.admin.mygamel.Position;
+import com.example.admin.mygamel.R;
+import com.example.admin.mygamel.base_classes.Element;
+import com.example.admin.mygamel.base_classes.Level;
+import com.example.admin.mygamel.elements.ElementCorner;
+import com.example.admin.mygamel.elements.ElementLine;
+import com.example.admin.mygamel.fragments.LevelSelection;
+
 import java.util.ArrayList;
 
 /**
- * Created by Admin on 18.05.2017.
+ * Created by Admin on 05.06.2017.
  */
 
-public class Level2 extends Level implements View.OnClickListener{
+public class Level3 extends Level {
     ArrayList<Element> arrayList;
     ImageView buttonNext;
 
-    public Level2(){}
+    public Level3(){}
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -27,7 +35,7 @@ public class Level2 extends Level implements View.OnClickListener{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.level_2, container,false);
+        return inflater.inflate(R.layout.level_3, container,false);
     }
 
     @Override
@@ -35,43 +43,45 @@ public class Level2 extends Level implements View.OnClickListener{
 
         arrayList = new ArrayList<>();
 
-        ElementLine view11 = (ElementLine) getActivity().findViewById(R.id.pos_1_1);
-        ImageView view12 = (ImageView) getActivity().findViewById(R.id.pos_1_2);
+        ImageView view11 = (ImageView) getActivity().findViewById(R.id.pos_1_1);
+        ElementCorner view12 = (ElementCorner) getActivity().findViewById(R.id.pos_1_2);
         ElementLine view13 = (ElementLine) getActivity().findViewById(R.id.pos_1_3);
-        ElementCorner view14 = (ElementCorner) getActivity().findViewById(R.id.pos_1_4);
-        ElementCorner view21 = (ElementCorner) getActivity().findViewById(R.id.pos_2_1);
-        ElementLine view22 = (ElementLine) getActivity().findViewById(R.id.pos_2_2);
+        ImageView view14 = (ImageView) getActivity().findViewById(R.id.pos_1_4);
+        ElementLine view21 = (ElementLine) getActivity().findViewById(R.id.pos_2_1);
+        ElementCorner view22 = (ElementCorner) getActivity().findViewById(R.id.pos_2_2);
         ElementLine view23 = (ElementLine) getActivity().findViewById(R.id.pos_2_3);
         ElementCorner view24 = (ElementCorner) getActivity().findViewById(R.id.pos_2_4);
-        ElementLine view31 = (ElementLine) getActivity().findViewById(R.id.pos_3_1);
-        ElementCorner view32 = (ElementCorner) getActivity().findViewById(R.id.pos_3_2);
+        ElementCorner view31 = (ElementCorner) getActivity().findViewById(R.id.pos_3_1);
+        ElementLine view32 = (ElementLine) getActivity().findViewById(R.id.pos_3_2);
         ElementLine view33 = (ElementLine) getActivity().findViewById(R.id.pos_3_3);
         ElementCorner view34 = (ElementCorner) getActivity().findViewById(R.id.pos_3_4);
         ElementCorner view41 = (ElementCorner) getActivity().findViewById(R.id.pos_4_1);
         ElementLine view42 = (ElementLine) getActivity().findViewById(R.id.pos_4_2);
-        ImageView view43 = (ImageView) getActivity().findViewById(R.id.pos_4_3);
+        ElementLine view43 = (ElementLine) getActivity().findViewById(R.id.pos_4_3);
         ElementCorner view44 = (ElementCorner) getActivity().findViewById(R.id.pos_4_4);
         buttonNext = (ImageView)getView().findViewById(R.id.button_next);
 
+        view12.setRightPos(Position.pos2);
         view13.setRightPos(Position.pos2);
-        view14.setRightPos(Position.pos3);
-        view21.setRightPos(Position.pos2);
-        view22.setRightPos(Position.pos2);
+        view21.setRightPos(Position.pos1);
+        view22.setRightPos(Position.pos1);
         view23.setRightPos(Position.pos2);
-        view24.setRightPos(Position.pos4);
+        view24.setRightPos(Position.pos3);
         view31.setRightPos(Position.pos1);
-        view41.setRightPos(Position.pos1);
-        view42.setRightPos(Position.pos2);
+        view32.setRightPos(Position.pos2);
+        view33.setRightPos(Position.pos2);
+        view34.setRightPos(Position.pos4);
 
+        arrayList.add(view12);
         arrayList.add(view13);
-        arrayList.add(view14);
         arrayList.add(view21);
         arrayList.add(view22);
         arrayList.add(view23);
         arrayList.add(view24);
         arrayList.add(view31);
-        arrayList.add(view41);
-        arrayList.add(view42);
+        arrayList.add(view32);
+        arrayList.add(view33);
+        arrayList.add(view34);
 
         view11.setOnClickListener(this);
         view12.setOnClickListener(this);
@@ -98,12 +108,7 @@ public class Level2 extends Level implements View.OnClickListener{
         if (v instanceof Element) {
             ((Element) v).myRotate();
         } else if (v.getId() == R.id.button_next) {
-            android.app.FragmentManager fragmentManager = getFragmentManager();
-            android.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            LevelSelection levelSelection = new LevelSelection();
-            fragmentTransaction.replace(R.id.main_activity,levelSelection);
-            fragmentTransaction.addToBackStack(null);
-            fragmentTransaction.commit();
+            toLevelSelect();
         }
 
 
@@ -115,7 +120,7 @@ public class Level2 extends Level implements View.OnClickListener{
                     ((ElementLine) i).setActive();
                 }
             }
-            super.saveData(2);
+            saveData(3);
         } else {
             buttonNext.setImageResource(R.drawable.button_next);
             buttonNext.setOnClickListener(null);
@@ -126,6 +131,4 @@ public class Level2 extends Level implements View.OnClickListener{
             }
         }
     }
-
 }
-

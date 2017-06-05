@@ -1,15 +1,17 @@
-package com.example.admin.mygamel;
+package com.example.admin.mygamel.base_classes;
 
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.util.AttributeSet;
 
+import com.example.admin.mygamel.Position;
+
 /**
  * Created by Admin on 25.04.2017.
  */ //Abstract element
-abstract class Element extends android.support.v7.widget.AppCompatImageView{
-    Position position = Position.pos1;
-    Position rightPos = Position.pos1;
+public abstract class Element extends android.support.v7.widget.AppCompatImageView{
+    protected Position position = Position.pos1;
+    protected Position rightPos = Position.pos1;
 
     public Element(Context context) {
         super(context);
@@ -21,9 +23,9 @@ abstract class Element extends android.support.v7.widget.AppCompatImageView{
         getRandPos();
     }
 
-    abstract void getRandPos();
+    protected abstract void getRandPos();
 
-    boolean isRightPos(){
+    protected boolean isRightPos(){
         if(position.equals(rightPos)){
             return true;
         }
@@ -31,7 +33,7 @@ abstract class Element extends android.support.v7.widget.AppCompatImageView{
 
     }
 
-    abstract  void nextPosition();
+    protected abstract  void nextPosition();
 
     public void myRotate(){
         this.setRotation(this.getRotation()+90);

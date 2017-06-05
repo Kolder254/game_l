@@ -1,9 +1,15 @@
-package com.example.admin.mygamel;
+package com.example.admin.mygamel.main;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
+
+import com.example.admin.mygamel.fragments.MainScreen;
+import com.example.admin.mygamel.service.MusicService;
+import com.example.admin.mygamel.R;
+import com.example.admin.mygamel.storage.BaseStorage;
+import com.example.admin.mygamel.storage.SaveData;
 
 /**
  * Created by Admin on 23.04.2017.

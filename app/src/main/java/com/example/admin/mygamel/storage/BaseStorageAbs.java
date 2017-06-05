@@ -1,4 +1,4 @@
-package com.example.admin.mygamel;
+package com.example.admin.mygamel.storage;
 
 import android.content.SharedPreferences;
 

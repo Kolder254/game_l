@@ -1,4 +1,4 @@
-package com.example.admin.mygamel;
+package com.example.admin.mygamel.storage;
 
 /**
  * Created by Admin on 23.04.2017.

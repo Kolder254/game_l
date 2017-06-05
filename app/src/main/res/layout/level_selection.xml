@@ -5,7 +5,7 @@
 <LinearLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginTop="100dp"
+    android:layout_marginTop="50dp"
     android:layout_gravity="center">
     <ImageView
         android:layout_width="wrap_content"
@@ -52,7 +52,8 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:layout_marginBottom="50dp">
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -71,5 +72,16 @@
             android:src="@drawable/button_level"
             android:id="@+id/level_9"
             android:layout_weight="1" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/home_button"
+            android:id="@+id/btn_home"/>
+
     </LinearLayout>
 </LinearLayout>

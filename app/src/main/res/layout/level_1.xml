@@ -33,19 +33,19 @@
             android:src="@drawable/elem_light_active"
             android:background="@android:color/transparent"/>
 
-        <com.example.admin.mygamel.ElementCorner
+        <com.example.admin.mygamel.elements.ElementCorner
             android:id="@+id/pos_1_2"
             style="@style/MyStyle"
             android:layout_weight="1"
             android:src="@drawable/elem_corner" />
 
-        <com.example.admin.mygamel.ElementCorner
+        <com.example.admin.mygamel.elements.ElementCorner
             android:id="@+id/pos_1_3"
             style="@style/MyStyle"
             android:layout_weight="1"
             android:src="@drawable/elem_corner" />
 
-        <com.example.admin.mygamel.ElementLine
+        <com.example.admin.mygamel.elements.ElementLine
             android:id="@+id/pos_1_4"
             style="@style/MyStyle"
             android:layout_weight="1"
@@ -57,25 +57,25 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
-        <com.example.admin.mygamel.ElementLine
+        <com.example.admin.mygamel.elements.ElementLine
             android:id="@+id/pos_2_1"
             style="@style/MyStyle"
             android:layout_weight="1"
             android:src="@drawable/elem_line" />
 
-        <com.example.admin.mygamel.ElementLine
+        <com.example.admin.mygamel.elements.ElementLine
             android:id="@+id/pos_2_2"
             style="@style/MyStyle"
             android:layout_weight="1"
             android:src="@drawable/elem_line" />
 
-        <com.example.admin.mygamel.ElementLine
+        <com.example.admin.mygamel.elements.ElementLine
             android:id="@+id/pos_2_3"
             style="@style/MyStyle"
             android:layout_weight="1"
             android:src="@drawable/elem_line" />
 
-        <com.example.admin.mygamel.ElementCorner
+        <com.example.admin.mygamel.elements.ElementCorner
             android:id="@+id/pos_2_4"
             style="@style/MyStyle"
             android:layout_weight="1"
@@ -87,25 +87,25 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
-        <com.example.admin.mygamel.ElementCorner
+        <com.example.admin.mygamel.elements.ElementCorner
             android:id="@+id/pos_3_1"
             style="@style/MyStyle"
             android:layout_weight="1"
             android:src="@drawable/elem_corner" />
 
-        <com.example.admin.mygamel.ElementCorner
+        <com.example.admin.mygamel.elements.ElementCorner
             android:id="@+id/pos_3_2"
             style="@style/MyStyle"
             android:layout_weight="1"
             android:src="@drawable/elem_corner" />
 
-        <com.example.admin.mygamel.ElementCorner
+        <com.example.admin.mygamel.elements.ElementCorner
             android:id="@+id/pos_3_3"
             style="@style/MyStyle"
             android:layout_weight="1"
             android:src="@drawable/elem_corner" />
 
-        <com.example.admin.mygamel.ElementCorner
+        <com.example.admin.mygamel.elements.ElementCorner
             android:id="@+id/pos_3_4"
             style="@style/MyStyle"
             android:layout_weight="1"
@@ -117,19 +117,19 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
-        <com.example.admin.mygamel.ElementCorner
+        <com.example.admin.mygamel.elements.ElementCorner
             android:id="@+id/pos_4_1"
             style="@style/MyStyle"
             android:layout_weight="1"
             android:src="@drawable/elem_corner" />
 
-        <com.example.admin.mygamel.ElementLine
+        <com.example.admin.mygamel.elements.ElementLine
             android:id="@+id/pos_4_2"
             style="@style/MyStyle"
             android:layout_weight="1"
             android:src="@drawable/elem_line" />
 
-        <com.example.admin.mygamel.ElementCorner
+        <com.example.admin.mygamel.elements.ElementCorner
             android:id="@+id/pos_4_3"
             style="@style/MyStyle"
             android:layout_weight="1"

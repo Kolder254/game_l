@@ -1,4 +1,4 @@
-package com.example.admin.mygamel;
+package com.example.admin.mygamel.levels;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,14 +7,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.example.admin.mygamel.Position;
+import com.example.admin.mygamel.R;
+import com.example.admin.mygamel.base_classes.Element;
+import com.example.admin.mygamel.base_classes.Level;
+import com.example.admin.mygamel.elements.ElementCorner;
+import com.example.admin.mygamel.elements.ElementLine;
+
 import java.util.ArrayList;
 
+/**
+ * Created by Admin on 05.06.2017.
+ */
 
-public class Level1 extends Level implements View.OnClickListener{
+public class Level7 extends Level {
     ArrayList<Element> arrayList;
     ImageView buttonNext;
 
-    public Level1(){}
+    public Level7(){}
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -24,14 +34,14 @@ public class Level1 extends Level implements View.OnClickListener{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.level_1, container,false);
+        return inflater.inflate(R.layout.level_7, container,false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 
         arrayList = new ArrayList<>();
-        int i  = 5;
+
         ImageView view11 = (ImageView)getView().findViewById(R.id.pos_1_1);
         ElementCorner view12 = (ElementCorner)getView().findViewById(R.id.pos_1_2);
         ElementCorner view13 = (ElementCorner)getView().findViewById(R.id.pos_1_3);
@@ -95,12 +105,7 @@ public class Level1 extends Level implements View.OnClickListener{
         if (v instanceof Element) {
             ((Element) v).myRotate();
         } else if (v.getId() == R.id.button_next) {
-            android.app.FragmentManager fragmentManager = getFragmentManager();
-            android.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            LevelSelection levelSelection = new LevelSelection();
-            fragmentTransaction.replace(R.id.main_activity,levelSelection);
-            fragmentTransaction.addToBackStack(null);
-            fragmentTransaction.commit();
+            toLevelSelect();
         }
 
 
@@ -112,7 +117,7 @@ public class Level1 extends Level implements View.OnClickListener{
                     ((ElementLine) i).setActive();
                 }
             }
-            super.saveData(1);
+            saveData(7);
         } else {
             buttonNext.setImageResource(R.drawable.button_next);
             buttonNext.setOnClickListener(null);
@@ -123,7 +128,4 @@ public class Level1 extends Level implements View.OnClickListener{
             }
         }
     }
-
 }
-
-
