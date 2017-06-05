@@ -36,7 +36,7 @@ public class Level1 extends Level implements View.OnClickListener{
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-
+        float d = 4.5f;
         arrayList = new ArrayList<>();
 
         ImageView view11 = (ImageView)getView().findViewById(R.id.pos_1_1);
